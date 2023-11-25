@@ -5,7 +5,7 @@
         <v-icon left>mdi-plus</v-icon>Novo Opt-In
       </v-btn>
     </div>
-    <div><v-data-table :headers="headers" :items="items"></v-data-table></div>
+    <div><v-data-table :headers="headers" :items="modifiedItems"></v-data-table></div>
   </div>
 </template>
 
