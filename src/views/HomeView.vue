@@ -1,12 +1,15 @@
 <template>
-  <div>
+  <v-container>
     <div>
-      <v-btn @click="botaoClicado">
+      <v-btn @click="toggleModal" v-model="dialog">
         <v-icon left>mdi-plus</v-icon>Novo Opt-In
       </v-btn>
     </div>
-    <div><v-data-table :headers="headers" :items="modifiedItems"></v-data-table></div>
-  </div>
+    <v-card>
+      <v-data-table :headers="headers" :items="modifiedItems">
+      </v-data-table>
+    </v-card>
+  </v-container>
 </template>
 
 <script>
@@ -180,8 +183,25 @@ export default {
     };
   },
   methods: {
-    botaoClicado() {
+    toggleModal() {
+      this.dialog = !this.dialog
       console.log("Botão clicado!");
+    },
+    detailsItem(item) {
+      console.log("Detalhes do item:", item);
+      // Lógica para exibir detalhes do item
+    },
+    editItem(item) {
+      console.log("Editar item:", item);
+      // Lógica para editar o item
+    },
+    deleteItem(item) {
+      console.log("Remover item:", item);
+      // Lógica para remover o item
+      const index = this.items.indexOf(item);
+      if (index !== -1) {
+        this.items.splice(index, 1);
+      }
     },
   },
 };
