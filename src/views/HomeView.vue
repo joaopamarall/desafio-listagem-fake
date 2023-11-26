@@ -7,6 +7,16 @@
     </div>
     <v-card>
       <v-data-table :headers="headers" :items="modifiedItems">
+        <template v-slot:body="{ items }">
+          <tr v-for="item in items" :key="item.id">
+            <td v-for="item in items" :key="item"></td>
+            <td>
+              <v-icon @click="editItem()">mdi-pencil</v-icon>
+              <v-icon @click="detailsItem()">mdi-eye</v-icon>
+              <v-icon @click="deleteItem()">mdi-delete</v-icon>
+            </td>            
+          </tr>
+        </template>
       </v-data-table>
     </v-card>
   </v-container>
@@ -25,6 +35,7 @@ export default {
   },
   data() {
     return {
+      dialog: false,
       headers: [
         { text: "Titular", value: "participantDocumentId" },
         { text: "Credenciadora", value: "managedParticipantId" },
@@ -185,7 +196,7 @@ export default {
   methods: {
     toggleModal() {
       this.dialog = !this.dialog
-      console.log("Botão clicado!");
+      console.log("dialog", this.dialog);
     },
     detailsItem(item) {
       console.log("Detalhes do item:", item);
