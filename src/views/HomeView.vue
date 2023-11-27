@@ -31,10 +31,10 @@
                   <v-text-field v-model="modifiedItems.financierDocument" label="Documento financeiro"></v-text-field>
                 </v-col>
                 <v-col cols="12" sm="6" md="4">
-                  <v-text-field v-model="modifiedItems.paymentScheme" label="Bandeira do cartão"></v-text-field>
+                  <v-text-field v-model="modifiedItems.name" label="Bandeira do cartão"></v-text-field>
                 </v-col>
                 <v-col cols="12" sm="6" md="4">
-                  <v-text-field v-model="modifiedItems.paymentScheme" label="Código do cartão"></v-text-field>
+                  <v-text-field v-model="modifiedItems.code" label="Código do cartão"></v-text-field>
                 </v-col>
                 <v-col cols="12" sm="6" md="4">
                   <v-text-field v-model="modifiedItems.optInSignatureDate" label="Data de assinatura"></v-text-field>
@@ -87,7 +87,7 @@ export default {
     modifiedItems() {
       return this.items.map((item) => ({
         ...item,
-        paymentScheme: item.paymentScheme ? `${item.paymentScheme.code} (${item.paymentScheme.name})` : '',
+        paymentScheme: item.paymentScheme ? `${item.paymentScheme.code} (${item.paymentScheme.name})` : { name: '', code: '' },
       }));
     },
     formTitle() {
